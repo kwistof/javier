@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+
+# KiCad: per-user state, caches, backups and local history
+*.kicad_prl
+fp-info-cache
+*.bak
+*-backups/
+.history/
+_autosave-*
+~*.lck
+
+# ZMK / west local builds
+.west/
+build/
+zmk/
+zephyr/
+modules/
+tools/
+bootloader/
+*.uf2

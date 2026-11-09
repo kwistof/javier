@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "javier") (type "KiCad") (uri "${KIPRJMOD}/../javier.kicad_sym") (options "") (descr "Javier project symbols"))
+)

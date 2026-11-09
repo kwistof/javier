@@ -1,0 +1,56 @@
+// A plain QWERTY starting point. Make it your own:
+// https://zmk.dev/docs/keymaps
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+#define BASE  0
+#define LOWER 1
+#define RAISE 2
+
+/ {
+    behaviors {
+        // Tap for the key, hold for the modifier
+        hm: home_row_mod {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        base_layer {
+            bindings = <
+            &kp Q        &kp W        &kp E         &kp R         &kp T      &kp Y      &kp U         &kp I         &kp O        &kp P
+            &hm LGUI A   &hm LALT S   &hm LCTRL D   &hm LSHFT F   &kp G      &kp H      &hm RSHFT J   &hm RCTRL K   &hm RALT L   &hm RGUI SEMI
+            &kp Z        &kp X        &kp C         &kp V         &kp B      &kp N      &kp M         &kp COMMA     &kp DOT      &kp FSLH
+                                      &kp ESC       &kp SPACE     &lt LOWER TAB      &lt RAISE RET &kp BSPC      &kp DEL
+            >;
+        };
+
+        // Hold Tab: numbers, arrows and Bluetooth
+        lower_layer {
+            bindings = <
+            &kp N1       &kp N2       &kp N3        &kp N4        &kp N5     &kp N6     &kp N7        &kp N8        &kp N9       &kp N0
+            &none        &none        &none         &none         &none      &kp LEFT   &kp DOWN      &kp UP        &kp RIGHT    &none
+            &bt BT_CLR   &bt BT_PRV   &bt BT_NXT    &none         &none      &none      &none         &none         &none        &none
+                                      &trans        &trans        &trans     &trans     &trans        &trans
+            >;
+        };
+
+        // Hold Enter: symbols
+        raise_layer {
+            bindings = <
+            &kp EXCL     &kp AT       &kp HASH      &kp DLLR      &kp PRCNT  &kp CARET  &kp AMPS      &kp STAR      &kp LPAR     &kp RPAR
+            &kp GRAVE    &kp TILDE    &kp MINUS     &kp UNDER     &kp EQUAL  &kp PLUS   &kp LBKT      &kp RBKT      &kp LBRC     &kp RBRC
+            &none        &none        &kp SQT       &kp DQT       &kp COLON  &kp PIPE   &kp BSLH      &none         &none        &none
+                                      &trans        &trans        &trans     &trans     &trans        &trans
+            >;
+        };
+    };
+};
